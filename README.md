@@ -6,46 +6,45 @@
 
 ## Objetivo
 
-O objetivo do projeto é desenvolver um sistema para acompanhamento dos jogos da Copa do Mundo 2026, permitindo consultar partidas por data, fase, grupo e estádio.
+O objetivo do projeto é desenvolver um sistema para acompanhamento dos jogos da Copa do Mundo 2026, permitindo que o usuário consulte partidas, datas, horários, grupos, fases, estádios e informações gerais dos confrontos.
 
-O sistema também permite visualizar detalhes das partidas, favoritar jogos, acessar um calendário interativo e exportar os jogos para um arquivo de calendário no formato `.ics`.
+O sistema também permite favoritar jogos, visualizar partidas em formato de calendário, exportar dados e gerar um arquivo de calendário no formato `.ics`, facilitando a importação dos jogos em aplicativos de calendário.
 
-## Contexto
+## Proposta do projeto
 
-Este projeto foi desenvolvido como atividade acadêmica, com foco em organização de dados, interface gráfica, manipulação de arquivos locais e melhoria do sistema a partir de feedbacks recebidos.
+O projeto foi criado como um sistema de organização e consulta para a Copa do Mundo 2026. A ideia principal é oferecer uma interface simples e funcional para que o usuário consiga acompanhar os jogos de forma mais prática, sem precisar consultar manualmente uma tabela externa a todo momento.
 
-Após apresentação e análise do projeto, foi sugerida a implementação de uma funcionalidade de calendário automático. A melhoria foi aplicada por meio da exportação dos jogos em formato `.ics`, permitindo que o usuário importe os jogos em aplicativos de calendário, como Outlook, Google Calendar, Calendário do Windows ou calendário do celular.
+A aplicação trabalha com uma base local de dados em JSON, exibindo as partidas no sistema por meio de telas como dashboard, lista de jogos, calendário, detalhes das partidas, favoritos e configurações.
+
+## Atualização após feedbacks
+
+Durante o desenvolvimento, foi recebida a sugestão de implementar uma forma de integração com calendário.
+
+A melhoria considerada no projeto foi a exportação dos jogos no formato `.ics`. Esse formato permite que o usuário baixe um arquivo de calendário e importe as partidas em aplicativos compatíveis, como Outlook, Google Calendar, Calendário do Windows ou calendário do celular.
+
+Essa funcionalidade não significa atualização em tempo real pela internet. O sistema continua usando dados locais. A exportação `.ics` serve para facilitar o acompanhamento dos jogos em outros aplicativos.
 
 ## Funcionamento do sistema
 
-O sistema utiliza uma base local em JSON com os jogos da Copa 2026. A partir desses dados, o usuário pode:
+O sistema utiliza dados armazenados localmente em arquivos JSON. A partir desses dados, a aplicação organiza e exibe as partidas da Copa 2026 em diferentes telas.
 
-* visualizar o dashboard inicial;
-* consultar todos os jogos;
-* pesquisar partidas por seleção, cidade ou estádio;
-* filtrar por fase, grupo e status;
-* acessar detalhes de cada partida;
-* favoritar jogos;
+O usuário pode:
+
+* visualizar um painel inicial com resumo dos jogos;
+* consultar a lista completa de partidas;
+* pesquisar jogos por seleção, cidade, estádio ou fase;
+* filtrar partidas por grupo, fase ou status;
+* abrir detalhes de cada confronto;
+* marcar partidas como favoritas;
 * visualizar jogos em um calendário mensal;
-* exportar partidas para calendário `.ics`;
+* exportar jogos em formato `.ics`;
 * exportar dados em `.csv`;
-* alterar preferências de visualização.
-
-## Funcionalidade implementada após feedback
-
-Durante o desenvolvimento, foi recebida a sugestão de implementar uma integração com calendário.
-
-A melhoria foi aplicada com a criação da exportação em formato `.ics`.
-
-Com essa função, o usuário pode gerar um arquivo de calendário contendo os jogos e abrir/importar esse arquivo em aplicativos compatíveis.
-
-Importante: o sistema não atualiza jogos em tempo real pela internet. Ele utiliza dados locais do arquivo JSON. Caso os dados sejam atualizados, o arquivo JSON deve ser substituído ou recarregado no sistema.
+* alterar preferências de visualização nas configurações.
 
 ## Tecnologias utilizadas
 
 * Python 3.11+
 * PySide6
-* QtAwesome
 * JSON
 * HTML5
 * CSS3
@@ -53,41 +52,6 @@ Importante: o sistema não atualiza jogos em tempo real pela internet. Ele utili
 * localStorage
 * Exportação ICS
 * Exportação CSV
-
-## Como executar a versão Python
-
-### Opção 1 — Abrir pelo arquivo BAT
-
-No Windows, dê dois cliques em:
-
-```txt
-abrir_app.bat
-```
-
-Esse arquivo cria o ambiente virtual, instala as dependências e abre o sistema.
-
-### Opção 2 — Rodar pelo terminal
-
-```bash
-pip install -r requirements.txt
-python main.py
-```
-
-## Como abrir a versão HTML
-
-A versão HTML foi criada para permitir visualização rápida do projeto no navegador, sem instalar Python.
-
-Dê dois cliques em:
-
-```txt
-abrir_html_v4.bat
-```
-
-Ou abra manualmente:
-
-```txt
-calendario_copa_2026_html_v4.html
-```
 
 ## Estrutura do projeto
 
@@ -113,83 +77,126 @@ Calendario-da-Copa-2026/
 ├── scripts/
 │   └── validate_data.py
 │
-├── src/
-│   ├── data_store.py
-│   ├── default_data.py
-│   ├── exporters.py
-│   ├── icons.py
-│   ├── main_window.py
-│   ├── models.py
-│   ├── pages.py
-│   ├── paths.py
-│   ├── theme.py
-│   ├── validators.py
-│   └── widgets.py
-│
-└── evidencias/
-    ├── dashboard.png
-    ├── jogos.png
-    ├── calendario.png
-    ├── detalhes.png
-    ├── favoritos.png
-    └── configuracoes.png
+└── src/
+    ├── data_store.py
+    ├── default_data.py
+    ├── exporters.py
+    ├── icons.py
+    ├── main_window.py
+    ├── models.py
+    ├── pages.py
+    ├── paths.py
+    ├── theme.py
+    ├── validators.py
+    └── widgets.py
 ```
 
-## Evidências do sistema funcionando
+## Arquivo principal do sistema
 
-As evidências devem ser registradas por meio de prints das telas principais:
-
-* Dashboard;
-* Jogos;
-* Calendário;
-* Detalhes do jogo;
-* Favoritos;
-* Configurações;
-* Exportação de calendário `.ics`.
-
-Os prints ficam na pasta:
+O arquivo principal da versão Python é:
 
 ```txt
-evidencias/
+main.py
 ```
 
-## Testes recomendados
+Ele é responsável por iniciar a aplicação e carregar a interface principal do sistema.
 
-Antes da entrega, execute:
+## Como executar a versão Python
+
+### Opção 1 — Abrir pelo arquivo BAT
+
+No Windows, dê dois cliques em:
+
+```txt
+abrir_app.bat
+```
+
+Esse arquivo cria o ambiente virtual, instala as dependências e abre o sistema.
+
+### Opção 2 — Executar pelo terminal
+
+Instale as dependências:
 
 ```bash
-python -m compileall .
-python scripts/validate_data.py
+pip install -r requirements.txt
+```
+
+Depois execute:
+
+```bash
 python main.py
 ```
 
-Também teste manualmente:
+## Como abrir a versão HTML
 
-1. Abrir o sistema.
-2. Acessar a tela inicial.
-3. Abrir a tela de jogos.
-4. Pesquisar uma seleção.
-5. Abrir detalhes de uma partida.
-6. Favoritar um jogo.
-7. Verificar a tela de favoritos.
-8. Abrir o calendário.
-9. Clicar em dias com jogos.
-10. Exportar calendário `.ics`.
-11. Exportar tabela `.csv`.
-12. Abrir a versão HTML.
+A versão HTML foi criada como uma alternativa para visualização rápida do projeto diretamente no navegador.
 
-## Link do repositório
-
-Cole aqui o link do GitHub:
+Para abrir, dê dois cliques em:
 
 ```txt
-https://github.com/SEU-USUARIO/NOME-DO-REPOSITORIO
+index.html
 ```
 
-## Consideração sobre feedbacks
+## Principais telas do sistema
 
-O projeto foi atualizado após os feedbacks recebidos na apresentação. A principal melhoria considerada foi a implementação da exportação automática para calendário por meio de arquivo `.ics`, permitindo maior utilidade prática para o usuário acompanhar as partidas.
+O sistema possui as seguintes telas principais:
 
-## Observação
+### Início
 
-O sistema trabalha com uma base local de dados. Ele não consulta a internet automaticamente e não atualiza resultados em tempo real.
+Tela inicial com resumo geral do calendário, próximos jogos e informações rápidas sobre o sistema.
+
+### Jogos
+
+Tela com a lista de partidas, busca, filtros e acesso aos detalhes de cada jogo.
+
+### Calendário
+
+Tela em formato de calendário mensal, permitindo visualizar os dias com partidas e selecionar jogos por data.
+
+### Detalhes
+
+Tela com informações específicas de uma partida, como seleções, horário, estádio, cidade, fase e opções de favorito ou exportação.
+
+### Favoritos
+
+Tela que reúne os jogos marcados pelo usuário como favoritos.
+
+### Configurações
+
+Tela para ajustar preferências de visualização, tema, formato de data, fuso horário e opções relacionadas à exportação.
+
+## Exportação para calendário
+
+Uma das melhorias do projeto é a exportação dos jogos para o formato `.ics`.
+
+Esse tipo de arquivo pode ser utilizado em aplicativos de calendário. Ao gerar o arquivo, o usuário pode importá-lo em serviços ou programas compatíveis.
+
+Exemplos de aplicativos compatíveis:
+
+* Google Calendar;
+* Outlook;
+* Calendário do Windows;
+* calendário do celular.
+
+Importante: dependendo do sistema operacional e do aplicativo de calendário instalado, a importação pode exigir confirmação manual do usuário.
+
+## Exportação CSV
+
+O sistema também permite exportar dados em formato `.csv`, facilitando a abertura das informações em programas de planilha, como Excel, Google Sheets ou LibreOffice Calc.
+
+## Sobre os dados
+
+O projeto utiliza uma base local de jogos armazenada em JSON.
+
+Isso significa que:
+
+* os dados são carregados a partir dos arquivos do próprio projeto;
+* o sistema não consulta uma API externa automaticamente;
+* o sistema não atualiza resultados em tempo real;
+* caso os dados mudem, o arquivo JSON precisa ser atualizado.
+
+## Conclusão
+
+O projeto Calendário da Copa 2026 apresenta uma solução para consultar, organizar e acompanhar partidas da competição por meio de uma interface gráfica em Python e uma versão HTML de apoio.
+
+A atualização após feedback trouxe a exportação em formato `.ics`, tornando o sistema mais útil para quem deseja acompanhar os jogos em aplicativos de calendário.
