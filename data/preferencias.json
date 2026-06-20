@@ -1,0 +1,12 @@
+{
+  "tema": "escuro",
+  "cor_destaque": "verde",
+  "visual_compacto": false,
+  "notificacoes": true,
+  "alertas_jogos": true,
+  "mudancas_horario": true,
+  "favoritos_alerta": true,
+  "fuso_horario": "(GMT-03:00) Brasília",
+  "idioma": "Português (Brasil)",
+  "formato_data": "DD/MM/AAAA"
+}
